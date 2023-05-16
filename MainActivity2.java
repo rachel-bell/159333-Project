@@ -29,6 +29,8 @@ public class MainActivity2 extends AppCompatActivity {
         getPetType();
         getBreedOrWeight();
         getPetFood();
+        passWeightInfo(petType);
+        passFoodInfo();
 
     }
 
@@ -498,6 +500,40 @@ public class MainActivity2 extends AppCompatActivity {
             fibre = fibreString.isEmpty() ? 0.0 : Double.parseDouble(fibreString);
         }
     }
+
+
+
+    public void passWeightInfo(String petType) {
+        double finalWeight;
+
+        if (petType.equals("dog")) {
+            finalWeight = dogWeight;
+        } else if (petType.equals("cat")) {
+            finalWeight = catWeight;
+        } else {
+            finalWeight = 0.0; // Assign a default value if needed
+        }
+
+        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+        intent.putExtra("weight", finalWeight);
+        startActivity(intent);
+    }
+
+
+
+
+
+    public void passFoodInfo() {
+
+        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+        intent.putExtra("foodType", foodType);
+        intent.putExtra("protein", protein);
+        intent.putExtra("fat", fat);
+        intent.putExtra("ash", ash);
+        intent.putExtra("fibre", fibre);
+        startActivity(intent);
+    }
+
 
 
 
